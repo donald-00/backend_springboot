@@ -1,6 +1,7 @@
 package examplespring.deb.sa.service;
 
 
+import examplespring.deb.sa.dto.ClientDTO;
 import examplespring.deb.sa.entites.Client;
 import examplespring.deb.sa.repository.ClientRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 
 @Service
@@ -26,8 +28,9 @@ public class ClientService {
         }
     }
 
-    public List<Client> rechercher(){
-        return this.clientRepository.findAll();
+    public Stream<ClientDTO> rechercher(){
+        return this.clientRepository.findAll()
+                .stream().map(client -> new ClientDTO(client.getId(),client.getEmail(),client.getTelephone()));
 
     }
 

@@ -1,6 +1,7 @@
 package examplespring.deb.sa.controller;
 
 
+import examplespring.deb.sa.dto.ClientDTO;
 import examplespring.deb.sa.entites.Client;
 
 import examplespring.deb.sa.service.ClientService;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 
 import static org.springframework.http.HttpStatus.NO_CONTENT;
@@ -34,7 +36,7 @@ public class ClientController {
     }
 
     @GetMapping(produces = APPLICATION_JSON_VALUE)
-    public List<Client> rechercher(){
+    public Stream<ClientDTO> rechercher(){
         return this.clientService.rechercher();
 
     }

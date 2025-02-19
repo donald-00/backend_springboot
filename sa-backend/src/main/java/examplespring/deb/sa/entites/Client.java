@@ -3,6 +3,8 @@ package examplespring.deb.sa.entites;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 @Entity
 @Table(name = "CLIENT")
 public class Client {
@@ -18,14 +20,25 @@ public class Client {
 
     private String telephone;
 
+    private Date creation;
+
+    @Column(name = "mise_a_jour")
+    private Date mise_a_jour;   // la mise
+
+
+
+
     public Client() {
 
     }
 
-    public Client(int id, String email, String telephone) {
+
+    public Client(int id, String email, String telephone, Date creation, Date misAjour) {
         this.id = id;
         this.email = email;
         this.telephone = telephone;
+        this.creation = creation;
+        this.mise_a_jour = mise_a_jour;
     }
 
     public int getId() {
@@ -50,5 +63,22 @@ public class Client {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+
+    public Date getCreation() {
+        return creation;
+    }
+
+    public void setCreation(Date creation) {
+        this.creation = creation;
+    }
+
+    public Date getMisAjour() {
+        return mise_a_jour;
+    }
+
+    public void setMisAjour(Date misAjour) {
+        this.mise_a_jour = misAjour;
     }
 }
